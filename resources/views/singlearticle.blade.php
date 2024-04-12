@@ -33,7 +33,7 @@
                     <span class="m-pub-dates__date">
                         Published: 
                         <time datetime="2024-03-24T08:00:14+00:00">
-                            23/03/2024 - 09:00
+                        {{ $article->created_at }}
                         </time>
                     </span>
                 </p>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="anchors-container">
                     <div class="save-article-wrapper">
-                        <button type="button" class="cvMh7UGw">
+                        <button type="button" class="cvMh7UGw" data-article-id="{{ $article->id }}">
                             <svg class="saved-article_svg__fs-icon saved-article_svg__fs-icon--saved-article" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="25" height="25">
                                 <path d="M13.9 3c.7 0 1.3.6 1.3 1.3V17L10 13.9 4.8 17V4.3c0-.7.5-1.3 1.3-1.3h7.8z"></path>
                             </svg>
@@ -88,53 +88,7 @@
         </article>
 
     </div>
-    <!--comments section-->
-    <div class="container mt-5">
-        <div class="d-flex justify-content-center row">
-            <div class="col-md-8">
-                <div class="d-flex flex-column comment-section">
-                    <div class="bg-white p-2">
-                        <div class="d-flex flex-row user-info"><img class="rounded-circle" src="{{ asset('assets/comment.jpg') }}" width="40">
-                            <div class=" name-date d-flex flex-column justify-content-start ml-2 "><span class="d-block font-weight-bold name">Amal Jaoua</span><span class="date text-black-50">24 Mars 2024</span></div>
-                        </div>
-                        <div class="mt-2">
-                            <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </div>
-                        <!-- Reply Section -->
-                        <div class="bg-light p-2">
-                            <div class="reply-section mt-2" style="display: none;">
-                                <div class="d-flex flex-row align-items-start">
-                                    <img class="rounded-circle" src="{{ asset('assets/comment.jpg') }}" width="40">
-                                    <textarea class="form-control ml-1 shadow-none textarea"></textarea>
-                                </div>
-                                <div class="mt-2 text-right">
-                                    <button class="btn btn-primary btn-sm shadow-none reply-btn" type="button">Reply</button>
-                                    <button class="btn btn-outline-primary btn-sm ml-1 shadow-none cancel-reply-btn" type="button"><span class="cancel">Cancel</span></button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="bg-white">
-                        <div class="interaction d-flex flex-row fs-12 ">
-                            <div class="like p-2 cursor" onclick="toggleHeart()"><i id="heart-icon" class="fa fa-heart-o"></i><span class="ml-1">Like</span></div>
-                            <div class="like reply p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Reply</span></div>
-                        </div>
-                    </div>
-                    <div class="bg-light p-2">
-                        <div class="d-flex flex-row align-items-start">
-                            <img class="rounded-circle" src="{{ asset('assets/comment.jpg') }}" width="40">
-                            <textarea class="form-control ml-1 shadow-none textarea"></textarea>
-                        </div>
-                        <div class="mt-2 text-right">
-                            <button class="btnn btn-primary btn-sm shadow-none" type="button">Post comment</button>
-                            <button class="btnn btn-outline-primary btn-sm ml-1 shadow-none " type="button"><span class="cancel">Cancel</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <livewire:comments :model="$article"/>
     <!--More acrticles-->
 
     <div class="container">
@@ -197,8 +151,11 @@
             </div>
 
         </div>
-        <script src="{{ asset('js/singlearticle.js') }}"></script>
         <script src="{{asset('js/dark-mode.js')}}"></script>
-</body>
+        <script src="{{ asset('js/reading.time.js') }}"></script>
+        <script src="{{ asset('js/tts.js') }}"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.8/dist/cdn.min.js"></script>
+        <script src="{{ asset('js/singlearticle.js') }}"></script>
+    </body>
 
 </html>
