@@ -69,7 +69,10 @@ class UserProfileController extends Controller
         GROUP BY DATE_FORMAT(ul.created_at, '%Y-%m-%d');", [$user->id]);
         $heatmap=$logins_per_date;
         //heatmap end
+        //latest articles start
         $latestArticles = $user->articles()->latest()->get();
+        //latest articles end 
+        
         $dashboard=array('sparks'=>$sparks, 'spider'=>$spider, 'curve'=>$curve, 'heatmap'=>$heatmap);
         return view('profile',compact('user','dashboard','latestArticles'));  
     }

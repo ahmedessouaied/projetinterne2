@@ -4,7 +4,6 @@ window.Apex = {
     }
   };
 
-
   var main1="#66503e";
   var main2="#101919";
   var primary1="#b89072";
@@ -181,11 +180,14 @@ window.Apex = {
     }
   }
   
+  curve=dashboard['curve'];
+  heatmap=dashboard['heatmap'];
+  spider=dashboard['spider'];
+
   new ApexCharts(document.querySelector("#spark1"), spark1).render();
   new ApexCharts(document.querySelector("#spark2"), spark2).render();
   new ApexCharts(document.querySelector("#spark3"), spark3).render();
   new ApexCharts(document.querySelector("#spark4"), spark4).render();
-  
   
   var options = {
     chart: {
@@ -298,16 +300,19 @@ window.Apex = {
     }
     return series;
   }
-  
+  var user_readers=spider['user_readers'];
+  var user_reads=spider['user_reads'];
+  console.log(user_readers);
+  console.log(user_reads);
   var optionsRadar={
     series: [
       {
         name: 'Your Reads',
-        data: [200, 200, 300, 200],
+        data: [user_reads[0]['articles_count'], user_reads[1]['articles_count'], user_reads[2]['articles_count'], user_reads[3]['articles_count']],
       },
       {
         name: 'People Reads from your articles',
-        data: [15, 120, 140, 200],
+        data: [user_readers[0]['articles_count'], user_readers[1]['articles_count'], user_readers[2]['articles_count'], user_readers[3]['articles_count']],
       }
   ],
     chart: {
@@ -810,35 +815,6 @@ window.Apex = {
   var secondary1="#e1dbd3";
   var secondary2="#faf7f5";
   var other="#ec7a2f";
-
-
-
-
-
-const dismissAll = document.getElementById('dismiss-all');
-const dismissBtns = Array.from(document.querySelectorAll('.dismiss-notification'));
-
-const notificationCards = document.querySelectorAll('.notification-card');
-
-dismissBtns.forEach(btn => {
-  btn.addEventListener('click', function(e){
-    e.preventDefault;
-    var parent = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-    parent.classList.add('display-none');
-  })
-});
-
-dismissAll.addEventListener('click', function(e){
-  e.preventDefault;
-  notificationCards.forEach(card => {
-    card.classList.add('display-none');
-  });
-  const row = document.querySelector('.notification-container');
-  const message = document.createElement('h4');
-  message.classList.add('text-center');
-  message.innerHTML = 'All caught up!';
-  row.appendChild(message);
-})
 
 // Function to display selected image
 function previewImage(input) {

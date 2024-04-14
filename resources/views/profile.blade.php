@@ -300,7 +300,6 @@
                                 </div>
                             </form>
                         </div>
-
                         <div class="tab-pane profile-header-tab" id="fill-tabpanel-1" role="tabpanel"
                             aria-labelledby="fill-tab-1">
                             <div class="main d-flex flex-column">
@@ -317,8 +316,8 @@
                                                 <div class="col-md-6">
                                                     <div class="box box1">
                                                         <div class="details">
-                                                            <h3> {{$dashboard}}</h3>
-                                                            <h4>READS</h4>
+                                                            <h3> {{$dashboard['sparks']['reads_count']}}</h3>
+                                                            <h4>USER READS</h4>
                                                         </div>
                                                         <div id="spark1"></div>
                                                     </div>
@@ -446,7 +445,7 @@
                                                     <div class="box box1">
                                                         <div class="details">
                                                             <h3> {{$dashboard['sparks']['reads_count']}}</h3>
-                                                            <h4>READS</h4>
+                                                            <h4>USER READS</h4>
                                                         </div>
                                                         <div id="spark1"></div>
                                                     </div>
@@ -575,7 +574,7 @@
                                                     <div class="box box1">
                                                         <div class="details">
                                                             <h3> {{$dashboard['sparks']['reads_count']}}</h3>
-                                                            <h4>READS</h4>
+                                                            <h4>USER READS</h4>
                                                         </div>
                                                         <div id="spark1"></div>
                                                     </div>
@@ -697,8 +696,9 @@
 
     <footer></footer>
     <script>
-        var dashboard = {{ Js::from($dashboard) }};
+        var dashboard = {!! json_encode($dashboard) !!};
     </script>
+
     <script src="{{asset('js/profile.js')}}"></script>
 </body>
 
