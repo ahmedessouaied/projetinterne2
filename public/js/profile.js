@@ -300,19 +300,43 @@ window.Apex = {
     }
     return series;
   }
+
   var user_readers=spider['user_readers'];
   var user_reads=spider['user_reads'];
-  console.log(user_readers);
-  console.log(user_reads);
+  
+  // Sample result array (empty)
+  const resultArray = [];
+  
+  // Define all categories you expect to have
+  const allCategories = ['artificial-intelligence', 'cyber-security', 'machine-learning', 'programming-web-mobile'];
+  
+  // // Create an object to store counts and initialize with 0 for all categories
+  // const countMap = {};
+  // allCategories.forEach(category => {
+  //     countMap[category] = 0;
+  // });
+  
+  // // Update counts from resultArray if it's not empty
+  // if (user_readers.length > 0) {
+  //     user_readers.forEach(item => {
+  //         countMap[item.category] = item.articles_count;
+  //     });
+  // }
+  // console.log(user_readers);
+  // console.log(countMap);
+
+  // console.log(user_readers);
+  // console.log(user_reads);
+
   var optionsRadar={
     series: [
       {
         name: 'Your Reads',
-        data: [user_reads[0]['articles_count'], user_reads[1]['articles_count'], user_reads[2]['articles_count'], user_reads[3]['articles_count']],
+        data: [2,5,6,7],
       },
       {
         name: 'People Reads from your articles',
-        data: [user_readers[0]['articles_count'], user_readers[1]['articles_count'], user_readers[2]['articles_count'], user_readers[3]['articles_count']],
+        data: [2,12,6,8],
       }
   ],
     chart: {

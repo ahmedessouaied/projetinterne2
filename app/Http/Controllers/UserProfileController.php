@@ -40,12 +40,12 @@ class UserProfileController extends Controller
         //sparks end
 
         //spider start
-        $user_readers = DB::select('SELECT a.category, COUNT(av.viewer_id) AS views_count
+        $user_readers = DB::select('SELECT a.category, COUNT(a.id) AS views_count
         FROM articles a
         JOIN article_views av ON a.id = av.article_id
         WHERE a.author_id = ?
         GROUP BY a.category;', [$user->id]);
-        $user_reads=DB::select('SELECT a.category, COUNT(av.article_id)AS articles_count
+        $user_reads=DB::select('SELECT a.category, COUNT(a.id)AS articles_count
         FROM articles a
         JOIN article_views av ON a.id = av.article_id
         WHERE av.viewer_id = ?
@@ -72,7 +72,7 @@ class UserProfileController extends Controller
         //latest articles start
         $latestArticles = $user->articles()->latest()->get();
         //latest articles end 
-        
+
         $dashboard=array('sparks'=>$sparks, 'spider'=>$spider, 'curve'=>$curve, 'heatmap'=>$heatmap);
         return view('profile',compact('user','dashboard','latestArticles'));  
     }
